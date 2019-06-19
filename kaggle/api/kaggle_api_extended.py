@@ -1133,6 +1133,8 @@ class KaggleApi(KaggleApi):
             dataset_urls = dataset.split('/')
             owner_slug = dataset_urls[0]
             dataset_slug = dataset_urls[1]
+            if(len(dataset_urls)==4 and dataset_urls[2] == 'version'):
+               dataset_version_number = dataset_urls[3]
         else:
             owner_slug = self.get_config_value(self.CONFIG_NAME_USER)
             dataset_slug = dataset
@@ -1147,6 +1149,7 @@ class KaggleApi(KaggleApi):
             self.datasets_download_with_http_info(
                 owner_slug=owner_slug,
                 dataset_slug=dataset_slug,
+                dataset_version_number=dataset_version_number,
                 _preload_content=False))
 
         outfile = os.path.join(effective_path, dataset_slug + '.zip')

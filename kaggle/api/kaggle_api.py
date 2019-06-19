@@ -1359,6 +1359,7 @@ class KaggleApi(object):
 
         query_params = []
         if 'dataset_version_number' in params:
+            print("Got version request", params['dataset_version_number'])
             query_params.append(('datasetVersionNumber', params['dataset_version_number']))  # noqa: E501
 
         header_params = {}
